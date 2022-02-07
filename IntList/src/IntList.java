@@ -68,6 +68,16 @@ public class IntList {
         IntList.incrementList(L.rest, x);;
     }
 
+    public void printList() {
+        if (rest == null) {
+            System.out.println(first);
+            return;
+        }
+
+        System.out.println(first);
+        rest.printList();
+    }
+
     public static void main(String[] args) {
         IntList L = new IntList(5, null);
         L.rest = new IntList(10, null);
@@ -80,5 +90,6 @@ public class IntList {
 
         IntList IL = IntList.incrList(L, 3);
         IntList DL = IntList.decrList(L, 3);
+        DL.printList();
     }
 }
