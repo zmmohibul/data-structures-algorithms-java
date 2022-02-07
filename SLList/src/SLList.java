@@ -40,6 +40,19 @@ public class SLList {
         return n.item;
     }
 
+    private int getSize(IntNode n) {
+        if (n.next == null) {
+            return 1;
+        }
+
+        return 1 + getSize(n.next);
+    }
+
+    public int getSize() {
+        IntNode n = first;
+        return getSize(n);
+    }
+
     public static void main(String[] args) {
         SLList L = new SLList(10);
 //        System.out.println(L.getFirst());
@@ -51,5 +64,6 @@ public class SLList {
         System.out.println(L.getFirst());
         L.addLast(5);
         System.out.println(L.getLast());
+        System.out.println(L.getSize());
     }
 }
