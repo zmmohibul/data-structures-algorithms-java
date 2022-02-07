@@ -5,6 +5,32 @@ public class SLList {
         this.first = new IntNode(x, null);
     }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     public void addFirst(int x) {
         IntNode n = new IntNode(x, this.first);
         this.first = n;
