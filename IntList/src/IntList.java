@@ -78,6 +78,26 @@ public class IntList {
         rest.printList();
     }
 
+    public void incrementListMemberMethod(int x) {
+        if (rest == null) {
+            first += x;
+            return;
+        }
+
+        first += x;
+        rest.incrementListMemberMethod(x);
+    }
+
+    public void decrementListMemberMethod(int x) {
+        if (rest == null ){
+            first -= x;
+            return;
+        }
+
+        first -= x;
+        rest.decrementListMemberMethod(x);
+    }
+
     public static void main(String[] args) {
         IntList L = new IntList(5, null);
         L.rest = new IntList(10, null);
@@ -90,6 +110,12 @@ public class IntList {
 
         IntList IL = IntList.incrList(L, 3);
         IntList DL = IntList.decrList(L, 3);
+
+        IL.incrementListMemberMethod(3);
+        DL.incrementListMemberMethod(3);
+
+        IL.decrementListMemberMethod(3);
+        DL.decrementListMemberMethod(3);
         DL.printList();
     }
 }
