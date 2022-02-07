@@ -7,37 +7,28 @@ public class IntList {
         this.rest = r;
     }
 
-    private int size(IntList curr) {
-        if (curr.rest == null) {
+    public int size() {
+        if (rest == null) {
             return 1;
         }
 
-        return size(curr.rest) + 1;
+        return 1 + rest.size();
     }
 
-    public int size() {
-        return this.size(this);
-    }
+//    public int get(int i) {
+//        if (i == 0) {
+//            return first;
+//        }
+//
+//        return rest.get(i - 1);
+//    }
 
-    public int getItr(int i) {
-        IntList curr = this;
-        for (int c = 0; c < i; c++) {
-            curr = curr.rest;
+    public int get(int i, IntList l) {
+        if (i == 0) {
+            return l.first;
         }
 
-        return curr.first;
-    }
-
-    public int get(int i, int c, IntList curr) {
-        if (c == i) {
-            return curr.first;
-        }
-
-        return get(i, c+1, curr.rest);
-    }
-
-    public int get(int i) {
-        return get(i, 0, this);
+        return get(i - 1, l.rest);
     }
 
     public static void main(String[] args) {
@@ -47,7 +38,6 @@ public class IntList {
         L.rest.rest.rest = new IntList(20, null);
         L.rest.rest.rest.rest = new IntList(25, null);
         System.out.println(L.size());
-        System.out.println(L.getItr(2));
-        System.out.println(L.get(3));
+        System.out.println(L.get(3, L));
     }
 }
