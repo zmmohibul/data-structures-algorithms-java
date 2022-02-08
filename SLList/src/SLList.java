@@ -1,5 +1,6 @@
 public class SLList {
     private IntNode first;
+    private IntNode sentinal;
     private int size;
 
     private class IntNode {
@@ -12,24 +13,30 @@ public class SLList {
         }
     }
 
+    public SLList() {
+        this.sentinal = new IntNode(11, null);
+        this.size = 0;
+    }
+
     public SLList(int x) {
         this.size += 1;
-        this.first = new IntNode(x, null);
+        this.sentinal = new IntNode(11, null);
+        this.sentinal.next = new IntNode(x, null);
     }
 
     public void addFirst(int x) {
         this.size += 1;
         IntNode n = new IntNode(x, first);
-        this.first = n;
+        this.sentinal.next = n;
     }
 
     public int getFirst() {
-        return this.first.item;
+        return this.sentinal.next.item;
     }
 
     public void addLast(int x) {
         this.size += 1;
-        addLast(x, first);
+        addLast(x, sentinal.next);
     }
 
     private void addLast(int x, IntNode p) {
@@ -47,7 +54,7 @@ public class SLList {
     }
 
     /* public int size() {
-        return size(first);
+        return size(this.sentinal.next);
     }
 
     private int size(IntNode p) {
