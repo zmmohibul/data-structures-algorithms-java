@@ -1,8 +1,4 @@
 public class SLList {
-    private IntNode first;
-    private IntNode sentinal;
-    private int size;
-
     private class IntNode {
         public int item;
         public IntNode next;
@@ -12,6 +8,10 @@ public class SLList {
             this.next = next;
         }
     }
+
+    private IntNode first;
+    private IntNode sentinal;
+    private int size;
 
     public SLList() {
         this.sentinal = new IntNode(11, null);
@@ -51,25 +51,5 @@ public class SLList {
 
     public int size() {
         return this.size;
-    }
-
-    /* public int size() {
-        return size(this.sentinal.next);
-    }
-
-    private int size(IntNode p) {
-        if (p.next == null) {
-            return 1;
-        }
-
-        return 1 + size(p.next);
-    } */
-
-    public static void main(String[] args) {
-        SLList L = new SLList(10);
-        L.addFirst(5);
-        L.addLast(15);
-        System.out.println(L.getFirst());
-        System.out.println(L.size());
     }
 }
