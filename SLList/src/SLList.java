@@ -102,10 +102,33 @@ public class SLList {
         }
     }
 
-    public static void main(String[] args) {
-        int arr[] = new int[] {1, 1, 2, 2, 2, 3, 3};
+    public void squareAndInsert(int x) {
+        IntNode last = squareAndInsert(this.sentinal.next);
+        IntNode n = new IntNode(x, null);
+        last.next = n;
+    }
 
+    private IntNode squareAndInsert(IntNode p) {
+        if (p.next == null) {
+            IntNode n = new IntNode(p.item * p.item, null);
+            p.next = n;
+            return p.next;
+        }
+
+        IntNode n = new IntNode(p.item * p.item, p.next);
+        p.next = n;
+        return squareAndInsert(n.next);
+    }
+
+    public static void main(String[] args) {
+//        int arr[] = new int[] {1, 1, 2, 2, 2, 3, 3};
+//
+//        SLList L = new SLList(arr);
+//        L.addAdjacent();
+
+        int arr[] = new int[] {1, 2};
         SLList L = new SLList(arr);
-        L.addAdjacent();
+        L.squareAndInsert(5);
+        L.squareAndInsert(7);
     }
 }
