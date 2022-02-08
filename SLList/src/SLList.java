@@ -30,7 +30,7 @@ public class SLList {
         IntNode p = this.sentinal;
         for (int i = 0; i < arr.length; i++) {
             this.size += 1;
-            
+
             IntNode n = new IntNode(arr[i], null);
             p.next = n;
             p = p.next;
@@ -72,16 +72,22 @@ public class SLList {
         this.size -= 1;
     }
 
-    public static void main(String[] args) {
-//        SLList L = new SLList(10);
-//        L.addFirst(5);
-//        L.addLast(15);
-//        L.deleteFirst();
-//        System.out.println(L.getFirst());
-//        System.out.println(L.size());
+    public void addAdjacent() {
+        IntNode p = this.sentinal.next;
+        while (p.next != null) {
+            if (p.item == p.next.item) {
+                p.item += p.next.item;
+                p.next = p.next.next;
+            } else {
+                p = p.next;
+            }
+        }
+    }
 
-        int arr[] = new int[] {1, 2, 3};
+    public static void main(String[] args) {
+        int arr[] = new int[] {1, 1, 2, 2, 2, 3, 3};
 
         SLList L = new SLList(arr);
+        L.addAdjacent();
     }
 }
