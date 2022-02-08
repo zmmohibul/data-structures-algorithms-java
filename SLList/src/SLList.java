@@ -72,7 +72,7 @@ public class SLList {
         this.size -= 1;
     }
 
-    public void addAdjacent() {
+    public void addAdjacentIterative() {
         IntNode p = this.sentinal.next;
         while (p.next != null) {
             if (p.item == p.next.item) {
@@ -81,6 +81,24 @@ public class SLList {
             } else {
                 p = p.next;
             }
+        }
+    }
+
+    public void addAdjacent() {
+        addAdjacent(this.sentinal.next);
+    }
+
+    private void addAdjacent(IntNode p) {
+        if (p.next == null) {
+            return;
+        }
+
+        if (p.item == p.next.item) {
+            p.item += p.next.item;
+            p.next = p.next.next;
+            addAdjacent(p);
+        } else {
+            addAdjacent(p.next);
         }
     }
 
