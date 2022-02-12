@@ -72,7 +72,21 @@ public class LinkedListDeque<T> {
         return value;
     }
 
-    public int getSize() {
+    public T get(int i) {
+        if (size < 1) {
+            return null;
+        }
+
+        Node p = sentinal;
+        while (i >= 0) {
+            p = p.next;
+            i -= 1;
+        }
+
+        return p.item;
+    }
+
+    public int size() {
         return size;
     }
 
@@ -93,8 +107,11 @@ public class LinkedListDeque<T> {
         ls.addFirst(10);
         ls.addFirst(5);
         ls.addLast(15);
-        System.out.println(ls.getSize());
+        System.out.println(ls.size());
         ls.printDeque();
+        System.out.println(ls.get(0));
+        System.out.println(ls.get(1));
+        System.out.println(ls.get(2));
         System.out.println(ls.removeFirst());
         ls.printDeque();
         System.out.println(ls.removeLast());
