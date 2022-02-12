@@ -37,6 +37,8 @@ public class LinkedListDeque<T> {
     }
 
     public void addLast(T x) {
+        size += 1;
+
         Node n = new Node(x);
         n.prev = sentinal.prev;
         n.next = sentinal;
@@ -48,10 +50,23 @@ public class LinkedListDeque<T> {
         return size;
     }
 
+    public void printDeque() {
+        System.out.print("[ ");
+        Node p = sentinal;
+        while (p.next != sentinal) {
+            p = p.next;
+            System.out.print(p.item);
+            System.out.print(" ");
+        }
+        System.out.print("]");
+    }
+
     public static void main(String[] args) {
         LinkedListDeque<Integer> ls = new LinkedListDeque<>();
         ls.addFirst(10);
         ls.addFirst(5);
         ls.addLast(15);
+        System.out.println(ls.getSize());
+        ls.printDeque();
     }
 }
