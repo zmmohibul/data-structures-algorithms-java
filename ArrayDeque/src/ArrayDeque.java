@@ -80,6 +80,38 @@ public class ArrayDeque<T> {
         size = size * 2;
     }
 
+    public void printDeque() {
+        System.out.print("[ ");
+        if (nextFirst > first) {
+            for (int i = nextFirst + 1; i < size; i++) {
+                System.out.print(items[i] + " ");
+            }
+
+            for (int i = 0; i <= first; i++) {
+                System.out.print(items[i] + " ");
+            }
+        } else {
+            for (int i = nextFirst + 1; i <= first; i++) {
+                System.out.print(items[i] + " ");
+            }
+        }
+
+        if (nextLast < last) {
+            for (int i = last; i < size; i++) {
+                System.out.print(items[i] + " ");
+            }
+
+            for (int i = 0; i < nextLast; i++) {
+                System.out.print(items[i] + " ");
+            }
+        } else {
+            for (int i = last; i < nextLast; i++) {
+                System.out.print(items[i] + " ");
+            }
+        }
+        System.out.print("]");
+    }
+
     public static void main(String[] args) {
         ArrayDeque<Integer> arr = new ArrayDeque<>();
         arr.addFirst(11);
@@ -88,8 +120,11 @@ public class ArrayDeque<T> {
         arr.addLast(12);
         arr.addLast(12);
         arr.addLast(12);
+        arr.addLast(13);
         arr.addFirst(11);
         arr.addFirst(11);
         arr.addFirst(11);
+        arr.addFirst(10);
+        arr.printDeque();
     }
 }
