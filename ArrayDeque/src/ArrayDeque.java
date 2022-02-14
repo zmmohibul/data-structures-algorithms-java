@@ -80,6 +80,28 @@ public class ArrayDeque<T> {
         size = size * 2;
     }
 
+    public T removeFirst() {
+        if (items[first] == null) {
+            return null;
+        }
+
+        if (nextFirst + 1 == size) {
+            nextFirst = 0;
+            T val = items[nextFirst];
+            items[nextFirst] = null;
+            return val;
+        }
+
+        if (items[nextFirst + 1] != null) {
+            nextFirst += 1;
+            T val = items[nextFirst];
+            items[nextFirst] = null;
+            return val;
+        } else {
+            return null;
+        }
+    }
+
     public void printDeque() {
         System.out.print("[ ");
         if (nextFirst > first) {
@@ -125,6 +147,16 @@ public class ArrayDeque<T> {
         arr.addFirst(11);
         arr.addFirst(11);
         arr.addFirst(10);
+        arr.addFirst(9);
+        arr.addFirst(8);
+        arr.addFirst(7);
+        arr.addFirst(6);
+        arr.addFirst(5);
+        System.out.println(arr.removeFirst());
+        System.out.println(arr.removeFirst());
+        System.out.println(arr.removeFirst());
+        System.out.println(arr.removeFirst());
+        System.out.println(arr.removeFirst());
         arr.printDeque();
     }
 }
