@@ -23,6 +23,14 @@ public class IntList {
         return size;
     }
 
+    public int get(int i) {
+        if (i == 0) {
+            return first;
+        }
+
+        return rest.get(i - 1);
+    }
+
     public static void main(String[] args) {
         IntList L = new IntList(5, null);
         L.rest = new IntList(10, null);
