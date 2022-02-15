@@ -49,6 +49,20 @@ public class IntList {
         incrementAndCopyValues(listToCopyFrom.rest, listToCopyTo.rest, x);
     }
 
+    public static IntList dincrList(IntList L, int x) {
+        decrementList(L, x);
+        return L;
+    }
+
+    private static void decrementList(IntList L, int x) {
+        if (L == null) {
+            return;
+        }
+
+        L.first -= x;
+        decrementList(L.rest, x);
+    }
+
     public static void main(String[] args) {
         IntList L = new IntList(5, null);
         L.rest = new IntList(10, null);
@@ -56,6 +70,7 @@ public class IntList {
         L.rest.rest.rest = new IntList(20, null);
         System.out.println(L.size());
         System.out.println(L.sizeIterative());
-        IntList Q = IntList.incrList(L, 3);
+        IntList IL = IntList.incrList(L, 3);
+        IntList DL = IntList.dincrList(L, 3);
     }
 }
