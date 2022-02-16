@@ -39,11 +39,36 @@ public class LinkedListDeque<T> {
         this.size += 1;
     }
 
+    public boolean isEmpty() {
+        if (this.size <= 0) {
+            return true;
+        }
+
+        return false;
+    }
+
+    public int size() {
+        return this.size;
+    }
+
+    public void printDeque() {
+        System.out.print("[ ");
+
+        for (Node p = this.sentinel.next; p != sentinel; p = p.next) {
+            System.out.print(p.item + " ");
+        }
+
+        System.out.print("]");
+    }
+
     public static void main(String[] args) {
         LinkedListDeque<Integer> L = new LinkedListDeque<>();
         L.addLast(15);
         L.addLast(10);
         L.addLast(5);
         L.addFirst(1);
+        System.out.println(L.isEmpty());
+        System.out.println(L.size());
+        L.printDeque();
     }
 }
