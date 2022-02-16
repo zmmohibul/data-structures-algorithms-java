@@ -59,6 +59,17 @@ public class LinkedListDeque<T> {
         }
 
         System.out.print("]");
+        System.out.println();
+    }
+
+    public T get(int index) {
+        Node p = sentinel.next;
+
+        for (int i = 0; i < index; i++) {
+            p = p.next;
+        }
+
+        return p.item;
     }
 
     public static void main(String[] args) {
@@ -70,5 +81,8 @@ public class LinkedListDeque<T> {
         System.out.println(L.isEmpty());
         System.out.println(L.size());
         L.printDeque();
+        System.out.println(L.get(0));
+        System.out.println(L.get(2));
+        System.out.println(L.get(3));
     }
 }
