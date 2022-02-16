@@ -23,16 +23,27 @@ public class LinkedListDeque<T> {
         this.sentinel.prev = sentinel;
     }
 
-    public void addFirst(T item) {
+    public void addLast(T item) {
         Node n = new Node(this.sentinel.prev, item, this.sentinel);
         this.sentinel.prev.next = n;
         this.sentinel.prev = n;
+
+        this.size += 1;
+    }
+
+    public void addFirst(T item) {
+        Node n = new Node(this.sentinel, item, this.sentinel.next);
+        this.sentinel.next.prev = n;
+        this.sentinel.next = n;
+
+        this.size += 1;
     }
 
     public static void main(String[] args) {
         LinkedListDeque<Integer> L = new LinkedListDeque<>();
-        L.addFirst(15);
-        L.addFirst(10);
-        L.addFirst(5);
+        L.addLast(15);
+        L.addLast(10);
+        L.addLast(5);
+        L.addFirst(1);
     }
 }
