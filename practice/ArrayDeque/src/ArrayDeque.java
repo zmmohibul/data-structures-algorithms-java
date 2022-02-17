@@ -56,6 +56,24 @@ public class ArrayDeque<T> {
         hasLast = true;
     }
 
+    public T removeFirst() {
+        if (numberOfItemsInArray == 0 || this.nextFirst == this.first) {
+            throw new IndexOutOfBoundsException();
+        }
+
+        if (this.nextFirst == this.size - 1) {
+            this.nextFirst = 0;
+            T valueToReturn = items[nextFirst];
+            items[nextFirst] = null;
+            return valueToReturn;
+        } else {
+            this.nextFirst += 1;
+            T valueToReturn = items[nextFirst];
+            items[nextFirst] = null;
+            return valueToReturn;
+        }
+    }
+
     public void resize() {
         T[] newItems = (T[]) new Object[size*2];
         int newSize = size * 2;
@@ -158,5 +176,8 @@ public class ArrayDeque<T> {
 
         AD.printDeque();
         System.out.println(AD.size());
+
+        System.out.println(AD.removeFirst());
+        AD.printDeque();
     }
 }
