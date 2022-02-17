@@ -61,17 +61,22 @@ public class ArrayDeque<T> {
             throw new IndexOutOfBoundsException();
         }
 
+        this.numberOfItemsInArray -= 1;
+        T valueToReturn;
         if (this.nextFirst == this.size - 1) {
             this.nextFirst = 0;
-            T valueToReturn = items[nextFirst];
+            valueToReturn = items[nextFirst];
             items[nextFirst] = null;
-            return valueToReturn;
         } else {
             this.nextFirst += 1;
-            T valueToReturn = items[nextFirst];
+            valueToReturn = items[nextFirst];
             items[nextFirst] = null;
-            return valueToReturn;
         }
+
+        if (numberOfItemsInArray / size <= 0.25) {
+            // downSize
+        }
+        return valueToReturn;
     }
 
     public T removeLast() {
@@ -79,17 +84,23 @@ public class ArrayDeque<T> {
             throw new IndexOutOfBoundsException();
         }
 
+        this.numberOfItemsInArray -= 1;
+        T valueToReturn;
         if (this.nextLast == 0) {
             this.nextLast = this.size - 1;
-            T valueToReturn = items[this.nextLast];
+            valueToReturn = items[this.nextLast];
             items[this.nextLast] = null;
-            return valueToReturn;
         } else {
             this.nextLast -= 1;
-            T valueToReturn = items[this.nextLast];
+            valueToReturn = items[this.nextLast];
             items[this.nextLast] = null;
-            return valueToReturn;
         }
+
+        if (numberOfItemsInArray / size <= 0.25) {
+            // downSize
+        }
+
+        return valueToReturn;
     }
 
     public void resize() {
