@@ -74,6 +74,24 @@ public class ArrayDeque<T> {
         }
     }
 
+    public T removeLast() {
+        if (numberOfItemsInArray == 0 || this.nextLast == this.last) {
+            throw new IndexOutOfBoundsException();
+        }
+
+        if (this.nextLast == 0) {
+            this.nextLast = this.size - 1;
+            T valueToReturn = items[this.nextLast];
+            items[this.nextLast] = null;
+            return valueToReturn;
+        } else {
+            this.nextLast -= 1;
+            T valueToReturn = items[this.nextLast];
+            items[this.nextLast] = null;
+            return valueToReturn;
+        }
+    }
+
     public void resize() {
         T[] newItems = (T[]) new Object[size*2];
         int newSize = size * 2;
@@ -178,6 +196,9 @@ public class ArrayDeque<T> {
         System.out.println(AD.size());
 
         System.out.println(AD.removeFirst());
+        AD.printDeque();
+
+        System.out.println(AD.removeLast());
         AD.printDeque();
     }
 }
