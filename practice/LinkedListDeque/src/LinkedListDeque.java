@@ -51,31 +51,6 @@ public class LinkedListDeque<T> {
         return this.size;
     }
 
-    public void printDeque() {
-        System.out.print("[ ");
-
-        for (Node p = this.sentinel.next; p != sentinel; p = p.next) {
-            System.out.print(p.item + " ");
-        }
-
-        System.out.print("]");
-        System.out.println();
-    }
-
-    public void printDequeRecursive() {
-        printDequeRecursive(sentinel.next);
-    }
-
-    public void printDequeRecursive(Node p) {
-        if (p == sentinel) {
-            System.out.println();
-            return;
-        }
-
-        System.out.print(p.item + " ");
-        printDequeRecursive(p.next);
-    }
-
     public T get(int index) {
         if (index < 0 || index >= size || size == 0) {
             throw new IndexOutOfBoundsException();
@@ -97,12 +72,57 @@ public class LinkedListDeque<T> {
         return getRecursive(index, sentinel.next);
     }
 
-    public T getRecursive(int index, Node p) {
+    private T getRecursive(int index, Node p) {
         if (index == 0) {
             return p.item;
         }
 
         return getRecursive(index - 1, p.next);
+    }
+
+    public T deleteFirst() {
+        Node itemToDelete = sentinel.next;
+
+        sentinel.next.prev = sentinel;
+        sentinel.next = sentinel.next.next;
+
+        itemToDelete.prev = itemToDelete.next = null;
+        return itemToDelete.item;
+    }
+
+    public T deleteLast() {
+        Node itemToDelete = sentinel.prev;
+
+        sentinel.prev = sentinel.prev.prev;
+        sentinel.prev.next = sentinel;
+
+        itemToDelete.prev = itemToDelete.next = null;
+        return itemToDelete.item;
+    }
+
+    public void printDeque() {
+        System.out.print("[ ");
+
+        for (Node p = this.sentinel.next; p != sentinel; p = p.next) {
+            System.out.print(p.item + " ");
+        }
+
+        System.out.print("]");
+        System.out.println();
+    }
+
+    public void printDequeRecursive() {
+        printDequeRecursive(sentinel.next);
+    }
+
+    private void printDequeRecursive(Node p) {
+        if (p == sentinel) {
+            System.out.println();
+            return;
+        }
+
+        System.out.print(p.item + " ");
+        printDequeRecursive(p.next);
     }
 
     public static void main(String[] args) {
@@ -119,5 +139,13 @@ public class LinkedListDeque<T> {
         System.out.println(L.get(3));
         L.printDequeRecursive();
         System.out.println(L.getRecursive(2));
+        System.out.println(L.deleteFirst());
+        L.printDeque();
+        System.out.println(L.deleteLast());
+        L.printDeque();
+        System.out.println(L.deleteLast());
+        L.printDeque();
+        System.out.println(L.deleteFirst());
+        L.printDeque();
     }
 }
