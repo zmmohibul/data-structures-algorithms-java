@@ -95,7 +95,7 @@ public class ArrayDeque<T> {
                 newNextLast = 0;
             }
         } else if (hasLast){
-            int numberOfItemsToCopy = this.nextLast - this.last + 1;
+            int numberOfItemsToCopy = this.nextLast - this.last;
             System.arraycopy(items, this.last, newItems, newLast, numberOfItemsToCopy);
 
             newNextLast += numberOfItemsToCopy;
