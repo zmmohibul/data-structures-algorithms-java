@@ -62,7 +62,25 @@ public class LinkedListDeque<T> {
         System.out.println();
     }
 
+    public void printDequeRecursive() {
+        printDequeRecursive(sentinel.next);
+    }
+
+    public void printDequeRecursive(Node p) {
+        if (p == sentinel) {
+            System.out.println();
+            return;
+        }
+
+        System.out.print(p.item + " ");
+        printDequeRecursive(p.next);
+    }
+
     public T get(int index) {
+        if (index < 0 || index >= size || size == 0) {
+            throw new IndexOutOfBoundsException();
+        }
+
         Node p = sentinel.next;
 
         for (int i = 0; i < index; i++) {
@@ -70,6 +88,21 @@ public class LinkedListDeque<T> {
         }
 
         return p.item;
+    }
+
+    public T getRecursive(int index) {
+        if (index < 0 || index > size || size == 0) {
+            throw new IndexOutOfBoundsException();
+        }
+        return getRecursive(index, sentinel.next);
+    }
+
+    public T getRecursive(int index, Node p) {
+        if (index == 0) {
+            return p.item;
+        }
+
+        return getRecursive(index - 1, p.next);
     }
 
     public static void main(String[] args) {
@@ -84,5 +117,7 @@ public class LinkedListDeque<T> {
         System.out.println(L.get(0));
         System.out.println(L.get(2));
         System.out.println(L.get(3));
+        L.printDequeRecursive();
+        System.out.println(L.getRecursive(2));
     }
 }
