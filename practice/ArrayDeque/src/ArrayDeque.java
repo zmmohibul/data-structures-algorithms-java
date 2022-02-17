@@ -7,6 +7,7 @@ public class ArrayDeque<T> {
     private int nextLast;
     private boolean hasFirst;
     private boolean hasLast;
+    private int numberOfItemsInArray;
 
     public ArrayDeque() {
         size = 8;
@@ -15,6 +16,7 @@ public class ArrayDeque<T> {
         last = nextLast = size / 2;
         hasFirst = false;
         hasLast = false;
+        numberOfItemsInArray = 0;
     }
 
     public void addFirst(T item) {
@@ -32,6 +34,7 @@ public class ArrayDeque<T> {
             nextFirst -= 1;
         }
 
+        numberOfItemsInArray += 1;
         hasFirst = true;
     }
 
@@ -49,6 +52,7 @@ public class ArrayDeque<T> {
             nextLast += 1;
         }
 
+        numberOfItemsInArray += 1;
         hasLast = true;
     }
 
@@ -113,6 +117,10 @@ public class ArrayDeque<T> {
         this.size = newSize;
     }
 
+    public int size() {
+        return this.numberOfItemsInArray;
+    }
+
     public void printDeque() {
         for (int i = 0; i < size; i++) {
             System.out.print(items[i] + " ");
@@ -149,5 +157,6 @@ public class ArrayDeque<T> {
         AD.addLast(1);
 
         AD.printDeque();
+        System.out.println(AD.size());
     }
 }
