@@ -73,8 +73,9 @@ public class ArrayDeque<T> {
             items[nextFirst] = null;
         }
 
-        if (numberOfItemsInArray / size <= 0.25) {
+        if (numberOfItemsInArray / (double) size <= 0.25) {
             // downSize
+            downSize();
         }
         return valueToReturn;
     }
@@ -96,8 +97,9 @@ public class ArrayDeque<T> {
             items[this.nextLast] = null;
         }
 
-        if (numberOfItemsInArray / size <= 0.25) {
+        if (numberOfItemsInArray / (double) size <= 0.25) {
             // downSize
+            downSize();
         }
 
         return valueToReturn;
@@ -164,6 +166,34 @@ public class ArrayDeque<T> {
         this.size = newSize;
     }
 
+    public void downSize() {
+        T[] newItems = (T[]) new Object[size/2];
+        int newSize = size / 2;
+        int newFirst = size / 4 - 1;
+        int newNextFirst = newFirst;
+        int newLast = size / 4;
+        int newNextLast = newLast;
+
+        if (hasFirst) {
+            int numberOfItemsToCopy = this.first - this.nextFirst;
+            System.arraycopy(items, this.nextFirst + 1, newItems, newFirst - numberOfItemsToCopy + 1, numberOfItemsToCopy);
+            newNextFirst -= numberOfItemsToCopy;
+        }
+
+        if (hasLast) {
+            int numberOfItemsToCopy = this.nextLast - this.last;
+            System.arraycopy(items, this.last, newItems, newLast, numberOfItemsToCopy);
+            newNextLast += numberOfItemsToCopy;
+        }
+
+        items = newItems;
+        this.first = newFirst;
+        this.last = newLast;
+        this.nextFirst = newNextFirst;
+        this.nextLast = newNextLast;
+        this.size = newSize;
+    }
+
     public int size() {
         return this.numberOfItemsInArray;
     }
@@ -210,6 +240,24 @@ public class ArrayDeque<T> {
         AD.printDeque();
 
         System.out.println(AD.removeLast());
+        AD.printDeque();
+        System.out.println(AD.first);
+        System.out.println(AD.nextFirst);
+
+
+
+        AD.removeFirst();
+        AD.removeFirst();
+        AD.removeFirst();
+        AD.removeFirst();
+        AD.removeFirst();
+
+        AD.removeLast();
+        AD.removeLast();
+        AD.removeLast();
+        AD.removeLast();
+        AD.printDeque();
+        AD.removeLast();
         AD.printDeque();
     }
 }
