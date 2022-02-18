@@ -63,6 +63,14 @@ public class SLList {
         addLast(x, p.next);
     }
 
+    public void insert(int i, int item) {
+        IntNode p = sentinal;
+        for (int j = 0; j < i; j++) {
+            p = p.next;
+        }
+        p.next = new IntNode(item, p.next);
+    }
+
     public int size() {
         return this.size;
     }
@@ -151,6 +159,7 @@ public class SLList {
         L.squareAndInsert(5);
         L.squareAndInsert(7);
         L.printList();
+        L.insert(1, 22);
         L.printListRecursive();
     }
 }
