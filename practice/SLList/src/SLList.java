@@ -72,6 +72,7 @@ public class SLList {
         return this.size;
     }
 
+
     public static void main(String[] args) {
         SLList L = new SLList(10);
         L.addFirst(5);

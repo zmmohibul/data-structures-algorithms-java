@@ -120,6 +120,26 @@ public class SLList {
         return squareAndInsert(n.next);
     }
 
+    public void printList() {
+        for (IntNode p = sentinal.next; p != null; p = p.next) {
+            System.out.print(p.item + " ");
+        }
+        System.out.println();
+    }
+
+    public void printListRecursive() {
+        printListRecursive(sentinal.next);
+        System.out.println();
+    }
+
+    private void printListRecursive(IntNode p) {
+        if (p == null) {
+            return;
+        }
+        System.out.print(p.item + " ");
+        printListRecursive(p.next);
+    }
+
     public static void main(String[] args) {
 //        int arr[] = new int[] {1, 1, 2, 2, 2, 3, 3};
 //
@@ -130,5 +150,7 @@ public class SLList {
         SLList L = new SLList(arr);
         L.squareAndInsert(5);
         L.squareAndInsert(7);
+        L.printList();
+        L.printListRecursive();
     }
 }
