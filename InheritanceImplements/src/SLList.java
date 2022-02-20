@@ -114,6 +114,15 @@ public class SLList<T> implements TheList<T> {
         return back.item;
     }
 
+    @Override
+    public void print() {
+        System.out.println("Print from SLList: ");
+        for (Node p = sentinel.next; p != null; p = p.next) {
+            System.out.print(p.item + " ");
+        }
+        System.out.println();
+    }
+
 
     public static void main(String[] args) {
         /* Creates a list of one integer, namely 10 */

@@ -23,6 +23,7 @@ public interface TheList<T> {
     public T removeLast();
 
     default public void print() {
+        System.out.println("Print from TheList: ");
         for (int i = 0; i < size(); i++) {
             System.out.print(get(i) + " ");
         }
