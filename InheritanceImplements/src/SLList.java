@@ -1,5 +1,4 @@
-
-public class SLList<T>  {
+public class SLList<T> implements TheList<T> {
     private class Node {
         public T item;
         public Node next;

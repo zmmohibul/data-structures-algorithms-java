@@ -1,4 +1,4 @@
-public class AList<T> {
+public class AList<T> implements TheList<T> {
     private T[] items;
     private int size;
 

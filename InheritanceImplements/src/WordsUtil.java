@@ -1,17 +1,5 @@
 public class WordsUtil {
-    public static String longest(SLList<String> list) {
-        int longestStringIndex = 0;
-        for (int i = 1; i < list.size(); i++) {
-            String longestString = list.get(longestStringIndex);
-            String currentIndexString = list.get(i);
-            if (currentIndexString.length() > longestString.length()) {
-                longestStringIndex = i;
-            }
-        }
-        return list.get(longestStringIndex);
-    }
-
-    public static String longest(AList<String> list) {
+    public static String longest(TheList<String> list) {
         int longestStringIndex = 0;
         for (int i = 1; i < list.size(); i++) {
             String longestString = list.get(longestStringIndex);
