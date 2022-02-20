@@ -28,5 +28,7 @@ public class WordsUtil {
         fruits.addLast("cherry");
 
         System.out.println(WordsUtil.longest(fruits));
+        fruits.print();
+        vegetables.print();
     }
 }

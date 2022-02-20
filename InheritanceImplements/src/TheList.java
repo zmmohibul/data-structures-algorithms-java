@@ -21,4 +21,11 @@ public interface TheList<T> {
 
     /** Deletes and returns last item. */
     public T removeLast();
+
+    default public void print() {
+        for (int i = 0; i < size(); i++) {
+            System.out.print(get(i) + " ");
+        }
+        System.out.println();
+    }
 }
