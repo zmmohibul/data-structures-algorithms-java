@@ -15,6 +15,14 @@ public class ArraySet<T> {
         }
 
         for (int i = 0; i < size; i++) {
+            if (items[i] == null) {
+                if (x == null) {
+                    return true;
+                } else {
+                    continue;
+                }
+            }
+
             if (items[i].equals(x)) {
                 return true;
             }
@@ -37,11 +45,14 @@ public class ArraySet<T> {
 
     public static void main(String[] args) {
         ArraySet<String> s = new ArraySet<>();
+        s.add(null);
         s.add("horse");
         s.add("fish");
         s.add("house");
         s.add("fish");
         System.out.println(s.contains("horse"));
+        System.out.println(s.contains("cat"));
+        System.out.println(s.contains(null));
         System.out.println(s.size());
     }
 }
