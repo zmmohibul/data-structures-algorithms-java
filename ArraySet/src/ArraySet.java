@@ -23,10 +23,11 @@ public class ArraySet<T> {
     }
 
     public void add(T x) {
-        if (!contains(x)) {
-            items[size] = x;
+        if (contains(x)) {
+            return;
         }
 
+        items[size] = x;
         size += 1;
     }
 
