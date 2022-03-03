@@ -80,7 +80,7 @@ public class IntList {
      * *  elements of B.  May modify items of A. Don't use 'new'.
      */
 
-    public static IntList dcatenate(IntList A, IntList B) {
+    public static IntList dcatenateIterative(IntList A, IntList B) {
         //TODO:  fill in method
         IntList ptrA = A;
         while (ptrA.rest != null) {
@@ -95,6 +95,24 @@ public class IntList {
 
         }
         return A;
+    }
+
+    public static IntList dcatenate(IntList A, IntList B) {
+        //TODO:  fill in method
+        dcatenateRecursive(A.rest, B, A);
+        return A;
+    }
+
+    private static void dcatenateRecursive(IntList A, IntList B, IntList ptr) {
+        if (B == null) {
+            return;
+        } else if (A == null) {
+            ptr.rest = new IntList(B.first, null);
+            dcatenateRecursive(null, B.rest, ptr.rest);
+        } else {
+            ptr.rest = new IntList(A.first, null);
+            dcatenateRecursive(A.rest, B, ptr.rest);
+        }
     }
 
     /**
