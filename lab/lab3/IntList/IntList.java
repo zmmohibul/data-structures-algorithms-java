@@ -140,6 +140,18 @@ public class IntList {
         return listToReturn;
     }
 
+    public static IntList reverse(IntList list) {
+        return null;
+    }
+
+    public int size() {
+        if (rest == null) {
+            return 1;
+        }
+
+        return 1 + rest.size();
+    }
+
 
 
 
