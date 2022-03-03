@@ -75,11 +75,6 @@ public class IntList {
     /** DO NOT MODIFY ANYTHING ABOVE THIS LINE! */
 
 
-    /**
-     * Returns a list consisting of the elements of A followed by the
-     * *  elements of B.  May modify items of A. Don't use 'new'.
-     */
-
     public static IntList dcatenateIterative(IntList A, IntList B) {
         //TODO:  fill in method
         IntList ptrA = A;
@@ -97,6 +92,10 @@ public class IntList {
         return A;
     }
 
+    /**
+     * Returns a list consisting of the elements of A followed by the
+     * *  elements of B.  May modify items of A. Don't use 'new'.
+     */
     public static IntList dcatenate(IntList A, IntList B) {
         //TODO:  fill in method
         dcatenateRecursive(A.rest, B, A);
