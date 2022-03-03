@@ -103,7 +103,24 @@ public class IntList {
      */
     public static IntList catenate(IntList A, IntList B) {
         //TODO:  fill in method
-        return null;
+        IntList listToReturn = new IntList(A.first, null);
+        IntList ptrListToReturn = listToReturn;
+
+        IntList ptrA = A.rest;
+        while (ptrA != null) {
+            ptrListToReturn.rest = new IntList(ptrA.first, null);
+            ptrListToReturn = ptrListToReturn.rest;
+            ptrA = ptrA.rest;
+        }
+
+        IntList ptrB = B;
+        while (ptrB != null) {
+            ptrListToReturn.rest = new IntList(ptrB.first, null);
+            ptrListToReturn = ptrListToReturn.rest;
+            ptrB = ptrB.rest;
+        }
+
+        return listToReturn;
     }
 
 
