@@ -141,7 +141,24 @@ public class IntList {
     }
 
     public static IntList reverse(IntList list) {
-        return null;
+        if (list == null) {
+            return null;
+        }
+
+        IntList ptr = list;
+        int j = list.size();
+        for (int i = 0; i < list.size() - 1; i++) {
+            j -= 1;
+            ptr = list;
+            for (int k = 0; k < j; k++) {
+                int temp = ptr.first;
+                ptr.first = ptr.rest.first;
+                ptr.rest.first = temp;
+                ptr = ptr.rest;
+            }
+        }
+
+        return list;
     }
 
     public int size() {
