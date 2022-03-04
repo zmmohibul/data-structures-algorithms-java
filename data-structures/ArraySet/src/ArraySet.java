@@ -127,6 +127,7 @@ public class ArraySet<T> implements Iterable<T> {
         set.add(13);
         set.add(99);
 
+        System.out.println("Set: " + set);
         System.out.println("Set contains 12: " + set.contains(12));
         System.out.println("Set contains 101: " + set.contains(101));
         System.out.println("Set contains null: " + set.contains(null));
@@ -141,8 +142,6 @@ public class ArraySet<T> implements Iterable<T> {
 //            System.out.println(item);
 //        }
 
-        System.out.println(set);
-
 
         ArraySet<Integer> set2 = ArraySet.of(10, 11, 12, null, 13, 99);
         System.out.println(set + " == " + set2 + ": " + set.equals(set2));
@@ -152,7 +151,5 @@ public class ArraySet<T> implements Iterable<T> {
 
         ArraySet<Integer> set4 = ArraySet.of(10, 11, 12, null, 13, 9);
         System.out.println(set + " == " + set4 + ": " + set.equals(set4));
-
-        System.out.println(ArraySet.of(1, 2, 3, 4));
     }
 }
