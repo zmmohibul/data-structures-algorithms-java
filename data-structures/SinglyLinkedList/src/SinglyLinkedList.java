@@ -28,7 +28,7 @@ public class SinglyLinkedList<T> {
     }
 
     private Node getLastNode() {
-        return getLastNodeRecursive(sentinel.next);
+        return getLastNodeRecursive(sentinel);
     }
 
     private Node getLastNodeRecursive(Node ptr) {
@@ -56,6 +56,14 @@ public class SinglyLinkedList<T> {
        return sb.toString();
     }
 
+    public static <T> SinglyLinkedList<T> of(T... items) {
+        SinglyLinkedList<T> listToReturn = new SinglyLinkedList<>();
+        for (T item : items) {
+            listToReturn.addLast(item);
+        }
+        return listToReturn;
+    }
+
     public static void  main(String[] args) {
         SinglyLinkedList<Integer> singlyLinkedList = new SinglyLinkedList<>();
         singlyLinkedList.addFirst(11);
@@ -66,5 +74,7 @@ public class SinglyLinkedList<T> {
         singlyLinkedList.addLast(17);
         singlyLinkedList.addLast(19);
         System.out.println(singlyLinkedList);
+        
+        System.out.println(SinglyLinkedList.of(1, 2, 3, 4));
     }
 }
