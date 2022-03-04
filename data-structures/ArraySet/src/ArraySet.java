@@ -1,4 +1,5 @@
 import javax.management.openmbean.KeyAlreadyExistsException;
+import java.util.Arrays;
 import java.util.Iterator;
 
 public class ArraySet<T> implements Iterable<T> {
@@ -67,6 +68,21 @@ public class ArraySet<T> implements Iterable<T> {
         }
     }
 
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder("{");
+
+        for (int i = 0; i < size() - 1; i++) {
+            sb.append(items[i]);
+            sb.append(", ");
+        }
+        sb.append(items[size() - 1]);
+
+        sb.append("}");
+
+        return sb.toString();
+    }
+
     public static void main(String[] args) {
         ArraySet<Integer> set = new ArraySet<>();
         set.add(10);
@@ -75,18 +91,23 @@ public class ArraySet<T> implements Iterable<T> {
         set.add(12);
         set.add(12);
         set.add(null);
-        System.out.println(set.contains(12));
-        System.out.println(set.contains(13));
-        System.out.println(set.contains(null));
-        System.out.println(set.size());
+        set.add(13);
+        set.add(99);
 
-        Iterator<Integer> iter = set.iterator();
-        while (iter.hasNext()) {
-            System.out.println(iter.next());
-        }
+        System.out.println("Set contains 12: " + set.contains(12));
+        System.out.println("Set contains 101: " + set.contains(101));
+        System.out.println("Set contains null: " + set.contains(null));
+        System.out.println("No of items in Set: " + set.size());
 
-        for (Integer item : set) {
-            System.out.println(item);
-        }
+//        Iterator<Integer> iter = set.iterator();
+//        while (iter.hasNext()) {
+//            System.out.println(iter.next());
+//        }
+//
+//        for (Integer item : set) {
+//            System.out.println(item);
+//        }
+
+        System.out.println(set);
     }
 }
