@@ -20,11 +20,13 @@ public class SinglyLinkedList<T> {
     public void addFirst(T item) {
         Node n = new Node(item, sentinel.next);
         sentinel.next = n;
+        size += 1;
     }
 
     public void addLast(T item) {
         Node lastNode = getLastNode();
         lastNode.next = new Node(item, null);
+        size += 1;
     }
 
     private Node getLastNode() {
@@ -74,7 +76,7 @@ public class SinglyLinkedList<T> {
         singlyLinkedList.addLast(17);
         singlyLinkedList.addLast(19);
         System.out.println(singlyLinkedList);
-        
+
         System.out.println(SinglyLinkedList.of(1, 2, 3, 4));
     }
 }
