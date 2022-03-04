@@ -145,20 +145,21 @@ public class IntList {
             return null;
         }
 
-        IntList ptr = list;
-        int j = list.size();
-        for (int i = 0; i < list.size() - 1; i++) {
-            j -= 1;
-            ptr = list;
-            for (int k = 0; k < j; k++) {
-                int temp = ptr.first;
-                ptr.first = ptr.rest.first;
-                ptr.rest.first = temp;
-                ptr = ptr.rest;
-            }
+        if  (list.rest == null) {
+            return list;
         }
 
-        return list;
+        IntList p = list;
+        IntList x = list;
+        IntList t = p.rest;
+        while (t != null) {
+            p.rest = t.rest;
+            t.rest = x;
+            x = t;
+            t = p.rest;
+        }
+
+        return x;
     }
 
     public int size() {
