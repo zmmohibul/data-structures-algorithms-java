@@ -1,7 +1,7 @@
 import javax.management.openmbean.KeyAlreadyExistsException;
 import java.util.Iterator;
 
-public class ArraySet<T> {
+public class ArraySet<T> implements Iterable<T> {
     private T[] items;
     private int size;
 
@@ -83,6 +83,10 @@ public class ArraySet<T> {
         Iterator<Integer> iter = set.iterator();
         while (iter.hasNext()) {
             System.out.println(iter.next());
+        }
+
+        for (Integer item : set) {
+            System.out.println(item);
         }
     }
 }
