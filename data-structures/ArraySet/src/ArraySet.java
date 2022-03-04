@@ -83,6 +83,31 @@ public class ArraySet<T> implements Iterable<T> {
         return sb.toString();
     }
 
+    @Override
+    public boolean equals(Object object) {
+        if (object == null) {
+            return false;
+        }
+
+        if (object.getClass() != this.getClass()) {
+            return false;
+        }
+
+        ArraySet<T> o = (ArraySet<T>) object;
+
+        if (o.size() != this.size()) {
+            return false;
+        }
+
+        for (T item : this) {
+            if (!o.contains(item)) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
     public static void main(String[] args) {
         ArraySet<Integer> set = new ArraySet<>();
         set.add(10);
@@ -109,5 +134,39 @@ public class ArraySet<T> implements Iterable<T> {
 //        }
 
         System.out.println(set);
+
+
+        ArraySet<Integer> set2 = new ArraySet<>();
+        set2.add(10);
+        set2.add(11);
+        set2.add(11);
+        set2.add(12);
+        set2.add(12);
+        set2.add(null);
+        set2.add(13);
+        set2.add(99);
+
+        System.out.println(set.equals(set2));
+
+        ArraySet<Integer> set3 = new ArraySet<>();
+        set3.add(10);
+        set3.add(11);
+        set3.add(12);
+        set3.add(null);
+        set3.add(13);
+        set3.add(99);
+        set3.add(1);
+
+        System.out.println(set.equals(set3));
+
+        ArraySet<Integer> set4 = new ArraySet<>();
+        set4.add(10);
+        set4.add(11);
+        set4.add(12);
+        set4.add(null);
+        set4.add(13);
+        set4.add(9);
+
+        System.out.println(set.equals(set4));
     }
 }
