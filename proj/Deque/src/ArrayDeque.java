@@ -28,6 +28,9 @@ public class ArrayDeque<T> {
     }
 
     public void addLast(T item) {
+        if (nextLast == 6) {
+            resize();
+        }
         if (items[nextLast] != null) {
             resize();
         }
@@ -57,6 +60,10 @@ public class ArrayDeque<T> {
             newNextLast += size / 2;
             noOfItemsToCopy = nextLast;
             System.arraycopy(items, 0, newItems, newNextLast, noOfItemsToCopy);
+            newNextLast += noOfItemsToCopy;
+        } else {
+            int noOfItemsToCopy = nextLast - last;
+            System.arraycopy(items, last, newItems, newNextLast, noOfItemsToCopy);
             newNextLast += noOfItemsToCopy;
         }
 
