@@ -108,6 +108,14 @@ public class ArraySet<T> implements Iterable<T> {
         return true;
     }
 
+    public static <T> ArraySet<T> of(T... items) {
+        ArraySet<T> returnSet = new ArraySet<>();
+        for (T item : items) {
+            returnSet.add(item);
+        }
+        return returnSet;
+    }
+
     public static void main(String[] args) {
         ArraySet<Integer> set = new ArraySet<>();
         set.add(10);
@@ -136,37 +144,15 @@ public class ArraySet<T> implements Iterable<T> {
         System.out.println(set);
 
 
-        ArraySet<Integer> set2 = new ArraySet<>();
-        set2.add(10);
-        set2.add(11);
-        set2.add(11);
-        set2.add(12);
-        set2.add(12);
-        set2.add(null);
-        set2.add(13);
-        set2.add(99);
+        ArraySet<Integer> set2 = ArraySet.of(10, 11, 12, null, 13, 99);
+        System.out.println(set + " == " + set2 + ": " + set.equals(set2));
 
-        System.out.println(set.equals(set2));
+        ArraySet<Integer> set3 = ArraySet.of(10, 11, 12, null, 13, 99, 1);
+        System.out.println(set + " == " + set3 + ": " + set.equals(set3));
 
-        ArraySet<Integer> set3 = new ArraySet<>();
-        set3.add(10);
-        set3.add(11);
-        set3.add(12);
-        set3.add(null);
-        set3.add(13);
-        set3.add(99);
-        set3.add(1);
+        ArraySet<Integer> set4 = ArraySet.of(10, 11, 12, null, 13, 9);
+        System.out.println(set + " == " + set4 + ": " + set.equals(set4));
 
-        System.out.println(set.equals(set3));
-
-        ArraySet<Integer> set4 = new ArraySet<>();
-        set4.add(10);
-        set4.add(11);
-        set4.add(12);
-        set4.add(null);
-        set4.add(13);
-        set4.add(9);
-
-        System.out.println(set.equals(set4));
+        System.out.println(ArraySet.of(1, 2, 3, 4));
     }
 }
