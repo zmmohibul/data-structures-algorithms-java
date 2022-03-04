@@ -18,18 +18,35 @@ public class ArrayDeque<T> {
 
         items[first] = item;
 
-        if (first < 0) {
+        if (first == 0) {
             first = size - 1;
         } else  {
             first -= 1;
         }
     }
 
+    public void addLast(T item) {
+        if (items[last] != null) {
+            // resize
+        }
+
+        items[last] = item;
+
+        if (last == size - 1) {
+            last = 0;
+        } else {
+            last += 1;
+        }
+    }
+
 
     public static void main(String[] args) {
         ArrayDeque<Integer> AD = new ArrayDeque<>();
-        AD.addFirst(9);
-        AD.addFirst(5);
-        AD.addFirst(1);
+        AD.addLast(9);
+        AD.addLast(5);
+        AD.addLast(1);
+        AD.addLast(-1);
+        AD.addLast(-3);
+        AD.addLast(-6);
     }
 }
