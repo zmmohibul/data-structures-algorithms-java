@@ -1,4 +1,5 @@
 import javax.management.openmbean.KeyAlreadyExistsException;
+import java.util.Iterator;
 
 public class ArraySet<T> {
     private T[] items;
@@ -42,6 +43,30 @@ public class ArraySet<T> {
         return size;
     }
 
+    public Iterator<T> iterator() {
+        return new ArraySetIterator();
+    }
+
+    private class ArraySetIterator implements Iterator<T> {
+        private int position;
+
+        public ArraySetIterator() {
+            this.position = 0;
+        }
+
+        @Override
+        public boolean hasNext() {
+            return position < size();
+        }
+
+        @Override
+        public T next() {
+            T itemToReturn = items[position];
+            position += 1;
+            return itemToReturn;
+        }
+    }
+
     public static void main(String[] args) {
         ArraySet<Integer> set = new ArraySet<>();
         set.add(10);
@@ -54,5 +79,10 @@ public class ArraySet<T> {
         System.out.println(set.contains(13));
         System.out.println(set.contains(null));
         System.out.println(set.size());
+
+        Iterator<Integer> iter = set.iterator();
+        while (iter.hasNext()) {
+            System.out.println(iter.next());
+        }
     }
 }
