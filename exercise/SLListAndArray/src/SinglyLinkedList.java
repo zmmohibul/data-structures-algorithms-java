@@ -29,6 +29,21 @@ public class SinglyLinkedList<T> {
         size += 1;
     }
 
+    public void reverse() {
+        Node ptr = sentinel.next;
+        Node t1 = ptr;
+
+        while (ptr.next != null) {
+            Node t2 = ptr.next;
+            if (t2.next == null) {
+                sentinel.next = t2;
+            }
+            ptr.next = t2.next;
+            t2.next = t1;
+            t1 = t2;
+        }
+    }
+
     public void insert(T item, int position) {
         if (position >= size) {
             Node lastNode = getLastNode();
@@ -95,6 +110,8 @@ public class SinglyLinkedList<T> {
 
         System.out.println(SinglyLinkedList.of(1, 2, 3, 4));
         singlyLinkedList.insert(10, 1);
+        System.out.println(singlyLinkedList);
+        singlyLinkedList.reverse();
         System.out.println(singlyLinkedList);
     }
 }
