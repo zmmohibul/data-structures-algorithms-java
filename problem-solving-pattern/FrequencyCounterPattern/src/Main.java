@@ -39,8 +39,24 @@ public class Main {
         return true;
     }
 
+    public static <T> boolean areThereDuplicates(T... items) {
+        HashMap<T, Integer> itemFrequency = new HashMap<>();
+
+        for (T item : items) {
+            if (itemFrequency.containsKey(item)) {
+                return true;
+            }
+
+            itemFrequency.put(item, 1);
+        }
+
+        return false;
+    }
+
     public static void main(String[] args) {
         System.out.println("Hello");
         System.out.println(validAnagram("abcdeaabbddfq", "abcdeaabbddfg"));
+        System.out.println(areThereDuplicates(0, 1, 2, 3, 0, 4, 5));
+        System.out.println(areThereDuplicates(0, 1, 2, 3, 4, 5));
     }
 }
