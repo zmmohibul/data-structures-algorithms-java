@@ -1,4 +1,6 @@
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class Main {
@@ -53,10 +55,74 @@ public class Main {
         return false;
     }
 
+    public static int findLCM(int n1, int n2) {
+        HashMap<Integer, Integer> primeFactorizationN1 = new HashMap<>();
+        int divisor = 2;
+        while (n1 != 1) {
+            if (n1 % divisor == 0) {
+                if (!primeFactorizationN1.containsKey(divisor)) {
+                    primeFactorizationN1.put(divisor, 1);
+                } else {
+                    primeFactorizationN1.put(divisor, primeFactorizationN1.get(divisor) + 1);
+                }
+                n1 /= divisor;
+            } else {
+                divisor += 1;
+            }
+
+        }
+
+        divisor = 2;
+        HashMap<Integer, Integer> primeFactorizationN2 = new HashMap<>();
+        while (n2 != 1) {
+            if (n2 % divisor == 0) {
+                if (!primeFactorizationN2.containsKey(divisor)) {
+                    primeFactorizationN2.put(divisor, 1);
+                } else {
+                    primeFactorizationN2.put(divisor, primeFactorizationN2.get(divisor) + 1);
+                }
+                int quotient = n2 / divisor;
+                n2 = quotient;
+                if (quotient > divisor) {
+                    break;
+                }
+            } else {
+                divisor += 1;
+            }
+        }
+
+        int result = 1;
+        for (Map.Entry entry : primeFactorizationN1.entrySet()) {
+            Integer k = (Integer) entry.getKey();
+            Integer v = (Integer) entry.getValue();
+            if (primeFactorizationN2.containsKey(k) && primeFactorizationN2.get(k) > v) {
+                result *= Math.pow(k, primeFactorizationN2.get(k));
+            } else {
+                result *= Math.pow(k, v);
+            }
+        }
+
+        return result;
+    }
+
+    public static int findLCM2(int n1, int n2) {
+        int result = 2;
+        while (true) {
+            if (result % n1 == 0 && result % n2 == 0) {
+                return result;
+            } else {
+                result += 1;
+            }
+        }
+    }
+
     public static void main(String[] args) {
         System.out.println("Hello");
         System.out.println(validAnagram("abcdeaabbddfq", "abcdeaabbddfg"));
         System.out.println(areThereDuplicates(0, 1, 2, 3, 0, 4, 5));
         System.out.println(areThereDuplicates(0, 1, 2, 3, 4, 5));
+        System.out.println(findLCM(12, 18));
+        System.out.println(findLCM2(12, 18));
+
     }
 }
