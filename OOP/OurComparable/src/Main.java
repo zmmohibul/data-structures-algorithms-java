@@ -7,9 +7,12 @@ public class Main {
         Cat tupur = new Cat("tupur", 2);
 
         Cat[] cats = new Cat[] { biral, brishty, tapur, tupur };
-        Cat maxCat = Cat.maxCat(cats);
+//        Cat maxCat = Cat.maxCat(cats);
 
+        Cat maxCat = (Cat) Maximizer.max(cats);
         System.out.println(maxCat);
+
+
 
     }
 }

@@ -1,4 +1,4 @@
-public class Cat {
+public class Cat implements OurCompareable {
     private String name;
     private int age;
 
@@ -29,5 +29,11 @@ public class Cat {
                 "name='" + name + '\'' +
                 ", age=" + age +
                 '}';
+    }
+
+    @Override
+    public int compareTo(Object o) {
+        Cat c = (Cat) o;
+        return this.age - c.age;
     }
 }
