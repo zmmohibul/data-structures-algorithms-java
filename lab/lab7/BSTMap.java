@@ -18,23 +18,8 @@ public class BSTMap<K extends Comparable<K>, V> implements Map61B<K, V>{
 
     @Override
     public boolean containsKey(K key) {
-        return containsKey(this.root, key);
-    }
-
-    private boolean containsKey(Node root, K key) {
-        if (root == null) {
-            return false;
-        }
-
-        int cmp = root.key.compareTo(key);
-
-        if (cmp < 0) {
-            return containsKey(root.left, key);
-        } else if (cmp > 0) {
-            return containsKey(root.right, key);
-        } else {
-            return true;
-        }
+        V val = get(key);
+        return val != null;
     }
 
     @Override
