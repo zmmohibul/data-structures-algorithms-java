@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 public class ArrayHeapMinPQ<T> {
 
@@ -18,6 +19,14 @@ public class ArrayHeapMinPQ<T> {
         }
 
         swim(items.size() - 1);
+    }
+
+    public T getSmallest() {
+        if (items.size() == 0) {
+            throw new NoSuchElementException();
+        }
+
+        return items.get(0).item;
     }
 
     public void print() {
@@ -102,6 +111,9 @@ public class ArrayHeapMinPQ<T> {
         pq.print();
 
         pq.add(3, 3);
+        pq.print();
+
+        System.out.println(pq.getSmallest());
         pq.print();
 
 
