@@ -1,12 +1,13 @@
 public class Main {
 
     public static void main(String[] args) {
-        BinarySearchTree<Integer> tree = new BinarySearchTree<>();
-        tree.insert(10);
-        tree.insert(6);
-        tree.insert(15);
-        tree.insert(3);
-        tree.insert(8);
-        tree.insert(20);
+        BinarySearchTree<Character> bst = new BinarySearchTree<>('D');
+        bst.insert('B');
+        bst.insert('F');
+        bst.insert('A');
+        bst.insert('C');
+        bst.insert('E');
+        bst.insert('G');
+        bst.insert('Z');
     }
 }

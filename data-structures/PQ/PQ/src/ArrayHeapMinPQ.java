@@ -56,6 +56,14 @@ public class ArrayHeapMinPQ<T> {
         return items.get(0).item;
     }
 
+    public void changePriority(T item, Double priority) {
+
+    }
+
+    private PriorityNode find(T item) {
+        
+    }
+
     public T removeSmallest() {
         PriorityNode nodeToRemove = items.get(0);
 
