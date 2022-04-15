@@ -32,6 +32,26 @@ public class BinarySearchTree<T extends Comparable<T>> {
 
     }
 
+    public void insertRecursive(T item) {
+        insert(root, item);
+    }
+
+    private Node insert(Node node, T item) {
+        if (node == null) {
+            return new Node(item);
+        }
+
+        if (node.item.compareTo(item) > 0) {
+            node.left = insert(node.left, item);
+        }
+
+        if (node.item.compareTo(item) < 0) {
+            node.right = insert(node.right, item);
+        }
+
+        return node;
+    }
+
 
 
     private class Node {
