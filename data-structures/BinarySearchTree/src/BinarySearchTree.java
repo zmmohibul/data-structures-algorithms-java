@@ -52,6 +52,64 @@ public class BinarySearchTree<T extends Comparable<T>> {
         return node;
     }
 
+    private boolean delete(Node node, T item) {
+        if (node.item.equals(item)) {
+            return true;
+        }
+
+        if (node.item.compareTo(item) > 0) {
+            boolean shouldDelete = delete(node.left, item);
+            if (shouldDelete) {
+                if (nodeHasTwoChildren(node.left)) {
+                    Node pred = findPred(node);
+                    Node tempPred = new Node(pred.item);
+                    tempPred.left = pred.left;
+                    tempPred.right = pred.right;
+                    node.left = tempPred;
+                    delete(pred.left, item);
+                    return false;
+                } else if (nodeHasOneChild(node.left)) {
+                    
+                }
+
+            } else {
+                return false;
+            }
+        }
+    }
+
+    private boolean nodeHasOneChild(Node n) {
+        return n.left != null || n.right != null;
+    }
+
+    private boolean nodeHasTwoChildren(Node n) {
+        return n.left != null && n.right != null;
+    }
+
+    private boolean nodeHasNoChildren(Node node) {
+        return node.left == null && node.right == null;
+    }
+
+    private Node findPred(Node node) {
+        return findPredHelper(node.left)
+    }
+    private Node findPredHelper(Node node) {
+        if (node.right != null) {
+            return findPredHelper(node.right);
+        } else {
+            return node;
+        }
+    }
+
+    private Node getChild(Node node) {
+        if (node.left != null) {
+            return node.left;
+        } else if (node.right != null){
+            return node.right;
+        } else {
+            return null;
+        }
+    }
 
 
     private class Node {
