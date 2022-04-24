@@ -15,6 +15,9 @@ public class Main {
                 // TODO: handle the `init` command
                 Repository.init();
                 break;
+            case "seeinit":
+                Repository.seeInit();
+                break;
             case "add":
                 // TODO: handle the `add [filename]` command
                 break;

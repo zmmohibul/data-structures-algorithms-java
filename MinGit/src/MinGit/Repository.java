@@ -31,9 +31,18 @@ public class Repository {
         byte[] rootSerialized = serialize(root);
         String rootSha = sha1(rootSerialized);
         File rootOutFile = join(COMMIT_DIR, rootSha);
-        writeObject(rootOutFile, rootSerialized);
+        writeObject(rootOutFile, root);
         rootShaCode.createNewFile();
         writeContents(rootShaCode, rootSha);
+    }
+
+    public static void seeInit() {
+        String rootSha = readContentsAsString(rootShaCode);
+        System.out.println(rootSha);
+        File rootInFile = join(COMMIT_DIR, rootSha);
+        System.out.println(rootInFile);
+        Commit root = readObject(rootInFile, Commit.class);
+        System.out.println(root.toString());
     }
 
 
