@@ -20,6 +20,7 @@ public class Repository {
     public static final File MIN_GIT = join(CWD, ".mingit");
     public static File COMMIT_DIR = join(MIN_GIT, "commits");
     static File rootShaCode = new File(COMMIT_DIR, "root.txt");
+    static File BLOBS_DIR = new File(MIN_GIT, "blobs");
 
 
     /* TODO: fill in the rest of this class. */
@@ -43,6 +44,19 @@ public class Repository {
         System.out.println(rootInFile);
         Commit root = readObject(rootInFile, Commit.class);
         System.out.println(root.toString());
+    }
+
+    public static void add(String fileName) throws IOException {
+        File file = join(CWD, fileName);
+        byte[] fileSerialized = serialize(readContents(file));
+        String fileSha = sha1(fileSerialized);
+        if (!BLOBS_DIR.exists()) {
+            BLOBS_DIR.mkdir();
+        }
+        File outFile = join(BLOBS_DIR, fileSha);
+        outFile.createNewFile();
+        writeContents(outFile, readContents(file));
+
     }
 
 
